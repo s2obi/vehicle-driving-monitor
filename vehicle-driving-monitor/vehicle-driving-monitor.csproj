@@ -55,7 +55,7 @@
   <ItemGroup>
     <Reference Include="Kvaser.CanLib, Version=1.6.360.0, Culture=neutral, PublicKeyToken=de45d0b2dbaf25b3, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>res\lib\CanLib\x64\Kvaser.CanLib.dll</HintPath>
+      <HintPath>res\lib\CanLib\win64\Kvaser.CanLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
