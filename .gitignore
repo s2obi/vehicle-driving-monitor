@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+!/vehicle-driving-monitor/res/lib/CanLib/x86/Kvaser.CanLib.dll
