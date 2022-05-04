@@ -30,35 +30,35 @@ namespace vehicle_driving_monitor
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btn_start_stop = new System.Windows.Forms.Button();
+            this.btn_refresh = new System.Windows.Forms.Button();
+            this.comboBox_Bitrate = new System.Windows.Forms.ComboBox();
+            this.comboBox_Channel = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label_vehicle_speed = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label_current_gear = new System.Windows.Forms.Label();
+            this.label_rpm = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label_eng_char = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label_eng_manifold_pressure = new System.Windows.Forms.Label();
+            this.label_eng_coolant_temp = new System.Windows.Forms.Label();
+            this.label_eng_temp = new System.Windows.Forms.Label();
+            this.label_throttle_position = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.label_brake = new System.Windows.Forms.Label();
+            this.label_voltage = new System.Windows.Forms.Label();
+            this.label_atmo_pressure = new System.Windows.Forms.Label();
+            this.label_air_temp = new System.Windows.Forms.Label();
+            this.label_air_conditioning_pressure = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.label_steering_angle = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label_steering_speed = new System.Windows.Forms.Label();
+            this.textBox_can_output = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,338 +68,379 @@ namespace vehicle_driving_monitor
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.btn_start_stop);
+            this.groupBox1.Controls.Add(this.btn_refresh);
+            this.groupBox1.Controls.Add(this.comboBox_Bitrate);
+            this.groupBox1.Controls.Add(this.comboBox_Channel);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(17, 18);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 79);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(514, 118);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CAN Configuration";
             // 
-            // button2
+            // btn_start_stop
             // 
-            this.button2.Location = new System.Drawing.Point(279, 47);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Start";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_start_stop.Location = new System.Drawing.Point(399, 70);
+            this.btn_start_stop.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_start_stop.Name = "btn_start_stop";
+            this.btn_start_stop.Size = new System.Drawing.Size(107, 34);
+            this.btn_start_stop.TabIndex = 5;
+            this.btn_start_stop.Text = "Start";
+            this.btn_start_stop.UseVisualStyleBackColor = true;
+            this.btn_start_stop.Click += new System.EventHandler(this.btn_start_stop_Click);
             // 
-            // button1
+            // btn_refresh
             // 
-            this.button1.Location = new System.Drawing.Point(279, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_refresh.Location = new System.Drawing.Point(399, 27);
+            this.btn_refresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(107, 34);
+            this.btn_refresh.TabIndex = 4;
+            this.btn_refresh.Text = "Refresh";
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
-            // comboBox2
+            // comboBox_Bitrate
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(79, 47);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(194, 20);
-            this.comboBox2.TabIndex = 3;
+            this.comboBox_Bitrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Bitrate.FormattingEnabled = true;
+            this.comboBox_Bitrate.Location = new System.Drawing.Point(113, 70);
+            this.comboBox_Bitrate.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox_Bitrate.Name = "comboBox_Bitrate";
+            this.comboBox_Bitrate.Size = new System.Drawing.Size(275, 26);
+            this.comboBox_Bitrate.TabIndex = 3;
+            this.comboBox_Bitrate.SelectedIndexChanged += new System.EventHandler(this.comboBox_Bitrate_SelectedIndexChanged);
             // 
-            // comboBox1
+            // comboBox_Channel
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(194, 20);
-            this.comboBox1.TabIndex = 2;
+            this.comboBox_Channel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Channel.FormattingEnabled = true;
+            this.comboBox_Channel.Location = new System.Drawing.Point(113, 30);
+            this.comboBox_Channel.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox_Channel.Name = "comboBox_Channel";
+            this.comboBox_Channel.Size = new System.Drawing.Size(275, 26);
+            this.comboBox_Channel.TabIndex = 2;
+            this.comboBox_Channel.SelectedIndexChanged += new System.EventHandler(this.comboBox_Channel_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 52);
+            this.label2.Location = new System.Drawing.Point(9, 78);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 12);
+            this.label2.Size = new System.Drawing.Size(96, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Bus Speed";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Location = new System.Drawing.Point(9, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 12);
+            this.label1.Size = new System.Drawing.Size(73, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Channel";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label_vehicle_speed);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label_current_gear);
+            this.groupBox2.Controls.Add(this.label_rpm);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label_eng_char);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 97);
+            this.groupBox2.Controls.Add(this.label_eng_manifold_pressure);
+            this.groupBox2.Controls.Add(this.label_eng_coolant_temp);
+            this.groupBox2.Controls.Add(this.label_eng_temp);
+            this.groupBox2.Controls.Add(this.label_throttle_position);
+            this.groupBox2.Location = new System.Drawing.Point(17, 146);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 153);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(514, 230);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Engine && Transmission";
             // 
-            // label13
+            // label_vehicle_speed
             // 
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(228, 115);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(130, 30);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "0 km/h";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_vehicle_speed.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_vehicle_speed.Location = new System.Drawing.Point(326, 172);
+            this.label_vehicle_speed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_vehicle_speed.Name = "label_vehicle_speed";
+            this.label_vehicle_speed.Size = new System.Drawing.Size(186, 45);
+            this.label_vehicle_speed.TabIndex = 10;
+            this.label_vehicle_speed.Text = "0 km/h";
+            this.label_vehicle_speed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("굴림", 11F);
-            this.label12.Location = new System.Drawing.Point(246, 96);
+            this.label12.Location = new System.Drawing.Point(351, 144);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 15);
+            this.label12.Size = new System.Drawing.Size(127, 22);
             this.label12.TabIndex = 9;
             this.label12.Text = "Speed(km/h)";
             // 
-            // label11
+            // label_current_gear
             // 
-            this.label11.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(131, 115);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 30);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "N";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_current_gear.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_current_gear.Location = new System.Drawing.Point(187, 172);
+            this.label_current_gear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_current_gear.Name = "label_current_gear";
+            this.label_current_gear.Size = new System.Drawing.Size(143, 45);
+            this.label_current_gear.TabIndex = 8;
+            this.label_current_gear.Text = "N";
+            this.label_current_gear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label9
+            // label_rpm
             // 
-            this.label9.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(6, 115);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 30);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "0 RPM";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_rpm.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_rpm.Location = new System.Drawing.Point(9, 172);
+            this.label_rpm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_rpm.Name = "label_rpm";
+            this.label_rpm.Size = new System.Drawing.Size(191, 45);
+            this.label_rpm.TabIndex = 6;
+            this.label_rpm.Text = "0 RPM";
+            this.label_rpm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("굴림", 11F);
-            this.label10.Location = new System.Drawing.Point(139, 96);
+            this.label10.Location = new System.Drawing.Point(199, 144);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 15);
+            this.label10.Size = new System.Drawing.Size(126, 22);
             this.label10.TabIndex = 7;
             this.label10.Text = "Current Gear";
             // 
-            // label7
+            // label_eng_char
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 73);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 12);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Engine Characteristic: ";
+            this.label_eng_char.AutoSize = true;
+            this.label_eng_char.Location = new System.Drawing.Point(9, 110);
+            this.label_eng_char.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_eng_char.Name = "label_eng_char";
+            this.label_eng_char.Size = new System.Drawing.Size(190, 18);
+            this.label_eng_char.TabIndex = 4;
+            this.label_eng_char.Text = "Engine Characteristic: ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("굴림", 11F);
-            this.label8.Location = new System.Drawing.Point(47, 96);
+            this.label8.Location = new System.Drawing.Point(67, 144);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 15);
+            this.label8.Size = new System.Drawing.Size(53, 22);
             this.label8.TabIndex = 5;
             this.label8.Text = "RPM";
             // 
-            // label6
+            // label_eng_manifold_pressure
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 59);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(190, 12);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Engine Manifold Pressure(kPa): ";
+            this.label_eng_manifold_pressure.AutoSize = true;
+            this.label_eng_manifold_pressure.Location = new System.Drawing.Point(9, 88);
+            this.label_eng_manifold_pressure.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_eng_manifold_pressure.Name = "label_eng_manifold_pressure";
+            this.label_eng_manifold_pressure.Size = new System.Drawing.Size(268, 18);
+            this.label_eng_manifold_pressure.TabIndex = 3;
+            this.label_eng_manifold_pressure.Text = "Engine Manifold Pressure(kPa): ";
             // 
-            // label5
+            // label_eng_coolant_temp
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(198, 12);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Engine Coolant Temperature(°C): ";
+            this.label_eng_coolant_temp.AutoSize = true;
+            this.label_eng_coolant_temp.Location = new System.Drawing.Point(9, 68);
+            this.label_eng_coolant_temp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_eng_coolant_temp.Name = "label_eng_coolant_temp";
+            this.label_eng_coolant_temp.Size = new System.Drawing.Size(281, 18);
+            this.label_eng_coolant_temp.TabIndex = 1;
+            this.label_eng_coolant_temp.Text = "Engine Coolant Temperature(°C): ";
             // 
-            // label4
+            // label_eng_temp
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Engine Temperature(°C): ";
+            this.label_eng_temp.AutoSize = true;
+            this.label_eng_temp.Location = new System.Drawing.Point(9, 46);
+            this.label_eng_temp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_eng_temp.Name = "label_eng_temp";
+            this.label_eng_temp.Size = new System.Drawing.Size(213, 18);
+            this.label_eng_temp.TabIndex = 2;
+            this.label_eng_temp.Text = "Engine Temperature(°C): ";
             // 
-            // label3
+            // label_throttle_position
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 12);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Throttle Position(%): ";
+            this.label_throttle_position.AutoSize = true;
+            this.label_throttle_position.Location = new System.Drawing.Point(9, 26);
+            this.label_throttle_position.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_throttle_position.Name = "label_throttle_position";
+            this.label_throttle_position.Size = new System.Drawing.Size(176, 18);
+            this.label_throttle_position.TabIndex = 1;
+            this.label_throttle_position.Text = "Throttle Position(%): ";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Location = new System.Drawing.Point(12, 256);
+            this.groupBox3.Controls.Add(this.label_brake);
+            this.groupBox3.Controls.Add(this.label_voltage);
+            this.groupBox3.Controls.Add(this.label_atmo_pressure);
+            this.groupBox3.Controls.Add(this.label_air_temp);
+            this.groupBox3.Controls.Add(this.label_air_conditioning_pressure);
+            this.groupBox3.Location = new System.Drawing.Point(17, 384);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(360, 113);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(514, 170);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Miscellaneous";
             // 
-            // label18
+            // label_brake
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label18.Location = new System.Drawing.Point(115, 74);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(123, 32);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Brake Off";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_brake.AutoSize = true;
+            this.label_brake.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_brake.Location = new System.Drawing.Point(164, 111);
+            this.label_brake.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_brake.Name = "label_brake";
+            this.label_brake.Size = new System.Drawing.Size(184, 48);
+            this.label_brake.TabIndex = 4;
+            this.label_brake.Text = "Brake Off";
+            this.label_brake.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label17
+            // label_voltage
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 59);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(127, 12);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Votage of Battery(V): ";
+            this.label_voltage.AutoSize = true;
+            this.label_voltage.Location = new System.Drawing.Point(9, 88);
+            this.label_voltage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_voltage.Name = "label_voltage";
+            this.label_voltage.Size = new System.Drawing.Size(185, 18);
+            this.label_voltage.TabIndex = 3;
+            this.label_voltage.Text = "Votage of Battery(V): ";
             // 
-            // label16
+            // label_atmo_pressure
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 45);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(186, 12);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Atmospheric Pressure(mmHg): ";
+            this.label_atmo_pressure.AutoSize = true;
+            this.label_atmo_pressure.Location = new System.Drawing.Point(9, 68);
+            this.label_atmo_pressure.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_atmo_pressure.Name = "label_atmo_pressure";
+            this.label_atmo_pressure.Size = new System.Drawing.Size(264, 18);
+            this.label_atmo_pressure.TabIndex = 2;
+            this.label_atmo_pressure.Text = "Atmospheric Pressure(mmHg): ";
             // 
-            // label15
+            // label_air_temp
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 31);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(127, 12);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Air Temperature(°C): ";
+            this.label_air_temp.AutoSize = true;
+            this.label_air_temp.Location = new System.Drawing.Point(9, 46);
+            this.label_air_temp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_air_temp.Name = "label_air_temp";
+            this.label_air_temp.Size = new System.Drawing.Size(180, 18);
+            this.label_air_temp.TabIndex = 1;
+            this.label_air_temp.Text = "Air Temperature(°C): ";
             // 
-            // label14
+            // label_air_conditioning_pressure
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 17);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(189, 12);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Air Conditioning Pressure(hPa): ";
+            this.label_air_conditioning_pressure.AutoSize = true;
+            this.label_air_conditioning_pressure.Location = new System.Drawing.Point(9, 26);
+            this.label_air_conditioning_pressure.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_air_conditioning_pressure.Name = "label_air_conditioning_pressure";
+            this.label_air_conditioning_pressure.Size = new System.Drawing.Size(267, 18);
+            this.label_air_conditioning_pressure.TabIndex = 0;
+            this.label_air_conditioning_pressure.Text = "Air Conditioning Pressure(hPa): ";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("굴림", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label19.Location = new System.Drawing.Point(248, 389);
+            this.label19.Location = new System.Drawing.Point(354, 584);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(128, 15);
+            this.label19.Size = new System.Drawing.Size(174, 22);
             this.label19.TabIndex = 12;
             this.label19.Text = "Steering Angle(°C)";
             // 
-            // label20
+            // label_steering_angle
             // 
-            this.label20.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label20.Location = new System.Drawing.Point(255, 404);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(104, 48);
-            this.label20.TabIndex = 14;
-            this.label20.Text = "0";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_steering_angle.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_steering_angle.Location = new System.Drawing.Point(364, 606);
+            this.label_steering_angle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_steering_angle.Name = "label_steering_angle";
+            this.label_steering_angle.Size = new System.Drawing.Size(149, 72);
+            this.label_steering_angle.TabIndex = 14;
+            this.label_steering_angle.Text = "0";
+            this.label_steering_angle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("굴림", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.Location = new System.Drawing.Point(254, 474);
+            this.label21.Location = new System.Drawing.Point(363, 711);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(107, 15);
+            this.label21.Size = new System.Drawing.Size(146, 22);
             this.label21.TabIndex = 15;
             this.label21.Text = "Steering Speed";
             // 
-            // label22
+            // label_steering_speed
             // 
-            this.label22.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label22.Location = new System.Drawing.Point(255, 489);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(104, 48);
-            this.label22.TabIndex = 16;
-            this.label22.Text = "0";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_steering_speed.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_steering_speed.Location = new System.Drawing.Point(364, 734);
+            this.label_steering_speed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_steering_speed.Name = "label_steering_speed";
+            this.label_steering_speed.Size = new System.Drawing.Size(149, 72);
+            this.label_steering_speed.TabIndex = 16;
+            this.label_steering_speed.Text = "0";
+            this.label_steering_speed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // textBox_can_output
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 20);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(348, 124);
-            this.textBox1.TabIndex = 17;
+            this.textBox_can_output.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_can_output.Location = new System.Drawing.Point(9, 30);
+            this.textBox_can_output.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_can_output.Multiline = true;
+            this.textBox_can_output.Name = "textBox_can_output";
+            this.textBox_can_output.ReadOnly = true;
+            this.textBox_can_output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_can_output.Size = new System.Drawing.Size(495, 184);
+            this.textBox_can_output.TabIndex = 17;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Location = new System.Drawing.Point(12, 549);
+            this.groupBox4.Controls.Add(this.textBox_can_output);
+            this.groupBox4.Location = new System.Drawing.Point(17, 824);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(360, 150);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(514, 225);
             this.groupBox4.TabIndex = 18;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "CAN Messages";
             // 
             // Form_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(384, 711);
+            this.ClientSize = new System.Drawing.Size(549, 1066);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label_steering_speed);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label_steering_angle);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_Main";
             this.Text = "Vehicle Data Monitor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Main_FormClosing);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form_Main_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -420,31 +461,31 @@ namespace vehicle_driving_monitor
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox_Bitrate;
+        private System.Windows.Forms.ComboBox comboBox_Channel;
+        private System.Windows.Forms.Button btn_start_stop;
+        private System.Windows.Forms.Button btn_refresh;
+        private System.Windows.Forms.Label label_vehicle_speed;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label_current_gear;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label_rpm;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label_eng_char;
+        private System.Windows.Forms.Label label_eng_manifold_pressure;
+        private System.Windows.Forms.Label label_eng_coolant_temp;
+        private System.Windows.Forms.Label label_eng_temp;
+        private System.Windows.Forms.Label label_throttle_position;
+        private System.Windows.Forms.Label label_brake;
+        private System.Windows.Forms.Label label_voltage;
+        private System.Windows.Forms.Label label_atmo_pressure;
+        private System.Windows.Forms.Label label_air_temp;
+        private System.Windows.Forms.Label label_air_conditioning_pressure;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label_steering_angle;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label_steering_speed;
+        private System.Windows.Forms.TextBox textBox_can_output;
         private System.Windows.Forms.GroupBox groupBox4;
     }
 }
