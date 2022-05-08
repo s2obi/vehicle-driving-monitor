@@ -24,6 +24,7 @@ namespace vehicle_driving_monitor
         public const int EMS5 = 672;
         public const int EMS12 = 809;
         public const int EMS14 = 1349;
+        public const int ESP12 = 544;
 
         /* Kvaser CanLib 관련 변수 정의 */
         public int canlib_handle;       // CAN channel 관리
@@ -190,14 +191,14 @@ namespace vehicle_driving_monitor
             int dlc;                   // CAN data byte 길이
             int flags;                 // 수신 flag
             long timestamp;            // 수신 timestamp
-            textBox_can_output.AppendText("Channel opened.\r\n");
-            textBox_can_output.AppendText("ID  DLC DATA                     Timestamp\r\n");
+            //textBox_can_output.AppendText("Channel opened.\r\n");
+            //textBox_can_output.AppendText("ID  DLC DATA                     Timestamp\r\n");
             while (true)
             {
                 status = Canlib.canReadWait((int)canlib_handle, out id, data, out dlc, out flags, out timestamp, 0);
                 if (status == Canlib.canStatus.canOK)
                 {
-                    DumpMessage(id, data, dlc, flags, timestamp);
+                    //DumpMessage(id, data, dlc, flags, timestamp);
                     GetSignal(id, data, dlc, flags);
                 }
                 else if (status != Canlib.canStatus.canERR_NOMSG)
@@ -217,6 +218,7 @@ namespace vehicle_driving_monitor
             bitrate = comboBox_Bitrate.SelectedIndex;
         }
 
+        int cnt = 3; // reduce rotate steering image delay
         float prev_angle = 0;
         private void GetSignal(int id, byte[] data, int dlc, int flags)
         {
@@ -244,8 +246,14 @@ namespace vehicle_driving_monitor
                 steering_angle = SAS_Angle;
                 if (prev_angle != SAS_Angle)
                 {
-                    Thread t_form_refresh = new Thread(Invalidate);
-                    t_form_refresh.Start();
+                    if (cnt == 3)
+                    {
+                        Invalidate();
+                        cnt = 0;
+                    }
+                    cnt++;
+                    //Thread t_form_refresh = new Thread(Invalidate);
+                    //t_form_refresh.Start();
                 }
                 prev_angle = SAS_Angle;
 
@@ -294,9 +302,9 @@ namespace vehicle_driving_monitor
                 /* PID_05h: Engine Coolant Temperature */
                 i_scale = 1;
                 i_offset = -40;
-                byte PID_05h = data[1];
-                PID_05h = (byte)(i_offset + i_scale * PID_05h);
-                label_eng_coolant_temp.Text = "Engine Coolant Temperature(°C): " + PID_05h.ToString();
+                byte pid_05h_val = data[1];
+                float PID_05h = (byte)(i_offset + i_scale * pid_05h_val);
+                label_eng_coolant_temp.Text = "Engine Coolant Temperature(°C): " + String.Format("{0:0.00}", PID_05h);
 
                 /* PID_0Ch: Engine RPM */
                 f_scale = 0.25f;
@@ -311,13 +319,6 @@ namespace vehicle_driving_monitor
                 byte PID_0Dh = data[4];
                 PID_0Dh = (byte)(i_offset + i_scale * PID_0Dh);
                 label_vehicle_speed.Text = PID_0Dh.ToString() + " km/h";
-
-                /* PID_11h: Throttle Position */
-                f_scale = 0.392157f;
-                i_offset = 0;
-                byte pid11h_val = data[5];
-                float PID_11h = (float)(i_offset + f_scale * pid11h_val);
-                label_throttle_position.Text = "Throttle Position(%): " + PID_11h.ToString();
             }
             else if (id == EngFrzFrm2)
             {
@@ -344,7 +345,7 @@ namespace vehicle_driving_monitor
                 i_offset = -48;
                 byte val = data[2];
                 float IntAirTemp = (float)(i_offset + f_scale * val);
-                label_air_temp.Text = "Air Temperature(°C): " + IntAirTemp.ToString();
+                label_air_temp.Text = "Air Temperature(°C): " + String.Format("{0:0.00}", IntAirTemp);
             }
             else if (id == EMS12)
             {
@@ -353,7 +354,7 @@ namespace vehicle_driving_monitor
                 f_offset = -48.0f;
                 byte val = data[1];
                 float TEMP_ENG = (float)(f_offset + f_scale * val);
-                label_eng_temp.Text = "Engine Temperature(°C): " + TEMP_ENG.ToString();
+                label_eng_temp.Text = "Engine Temperature(°C): " + String.Format("{0:0.00}", TEMP_ENG);
 
                 /* BRAKE_ACT: Brake Activate - 1: 안밟음 2: 밟음, 2값 확인 안됨 */
                 f_scale = 1.0f;
@@ -381,6 +382,13 @@ namespace vehicle_driving_monitor
                 else if (ENG_CHR == 1 || ENG_CHR == 5)  { type = "LPI"; }
                 else                                    { type = "Diesel"; }
                 label_eng_char.Text = "Engine Characteristic: " + type;
+
+                /* PV_AV_CAN: Accel Pedal Position */
+                f_scale = 0.3906f;
+                i_offset = 0;
+                byte pv_av_can_val = data[6];
+                float PV_AV_CAN = (float)(i_offset + f_scale * pv_av_can_val);
+                label_throttle_position.Text = "Throttle Position(%): " + PV_AV_CAN.ToString();
             }
             else if (id == EMS14)
             {
@@ -397,6 +405,15 @@ namespace vehicle_driving_monitor
                 byte vb_val = data[3];
                 float VB = (float)(f_offset + f_scale * vb_val);
                 label_voltage.Text = "Votage of Battery(V): " + VB.ToString();
+            }
+            else if (id == ESP12)
+            {
+                /* CYL_PRES: Brake Pedal Position */
+                f_scale = 0.1f;
+                i_offset = 0;
+                UInt16 cyl_pres_val = (UInt16)(((data[3] & 0xFC) >> 10) | ((data[4] & 0x3F) << 6));
+                float CYL_PRES = (float)(i_offset + f_scale * cyl_pres_val);
+                label_brake_pos.Text = "Brake Position(Bar): " + String.Format("{0:0.00}", CYL_PRES);
             }
         }
 
