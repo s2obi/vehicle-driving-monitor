@@ -49,10 +49,14 @@ namespace vehicle_driving_monitor
             comboBox_Bitrate.Items.Add("250 kbit/s");
             comboBox_Bitrate.Items.Add("125 kbit/s");
             comboBox_Bitrate.SelectedIndex = 1;
+
+            /* accel, brake progressbar 색상 변경 */
+            modifyProgressBar.SetState(progBar_accel, 3);
+            modifyProgressBar.SetState(progBar_brake, 2);
         }
 
         /* Main 폼에 스티어링 이미지 출력 */
-        int en1 = 125, boy1 = 460, koordinatX1 = 150, koordinatY1 = 150;
+        int en1 = 125, boy1 = 450, koordinatX1 = 150, koordinatY1 = 150;
         float steering_angle = 0.0f;
         Bitmap image = Properties.Resources.steering;
         private void Form_Main_Paint(object sender, PaintEventArgs e)
@@ -340,12 +344,12 @@ namespace vehicle_driving_monitor
             }
             else if (id == EMS5)
             {
-                /* IntAirTemp: Air Temperature */
+                /* IntAirTemp: Intake Air Temperature */
                 f_scale = 0.75f;
                 i_offset = -48;
                 byte val = data[2];
                 float IntAirTemp = (float)(i_offset + f_scale * val);
-                label_air_temp.Text = "Air Temperature(°C): " + String.Format("{0:0.00}", IntAirTemp);
+                label_air_temp.Text = "Intake Air Temperature(°C): " + String.Format("{0:0.00}", IntAirTemp);
             }
             else if (id == EMS12)
             {
@@ -389,6 +393,7 @@ namespace vehicle_driving_monitor
                 byte pv_av_can_val = data[6];
                 float PV_AV_CAN = (float)(i_offset + f_scale * pv_av_can_val);
                 label_throttle_position.Text = "Throttle Position(%): " + PV_AV_CAN.ToString();
+                progBar_accel.Value = (int)PV_AV_CAN;
             }
             else if (id == EMS14)
             {
@@ -411,9 +416,10 @@ namespace vehicle_driving_monitor
                 /* CYL_PRES: Brake Pedal Position */
                 f_scale = 0.1f;
                 i_offset = 0;
-                UInt16 cyl_pres_val = (UInt16)(((data[3] & 0xFC) >> 10) | ((data[4] & 0x3F) << 6));
+                UInt16 cyl_pres_val = (UInt16)(((data[5] & 0x0F) << 8) | data[4]);
                 float CYL_PRES = (float)(i_offset + f_scale * cyl_pres_val);
                 label_brake_pos.Text = "Brake Position(Bar): " + String.Format("{0:0.00}", CYL_PRES);
+                progBar_brake.Value = ((int)CYL_PRES > 100) ? 100 : (int)CYL_PRES;
             }
         }
 

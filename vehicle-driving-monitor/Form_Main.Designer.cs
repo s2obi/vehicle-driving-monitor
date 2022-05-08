@@ -37,6 +37,7 @@ namespace vehicle_driving_monitor
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label_brake_pos = new System.Windows.Forms.Label();
             this.label_vehicle_speed = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label_current_gear = new System.Windows.Forms.Label();
@@ -60,7 +61,14 @@ namespace vehicle_driving_monitor
             this.label_steering_speed = new System.Windows.Forms.Label();
             this.textBox_can_output = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label_brake_pos = new System.Windows.Forms.Label();
+            this.progBar_brake = new vehicle_driving_monitor.verticalProgressBar();
+            this.progBar_accel = new vehicle_driving_monitor.verticalProgressBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -160,6 +168,15 @@ namespace vehicle_driving_monitor
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Engine && Transmission";
+            // 
+            // label_brake_pos
+            // 
+            this.label_brake_pos.AutoSize = true;
+            this.label_brake_pos.Location = new System.Drawing.Point(6, 31);
+            this.label_brake_pos.Name = "label_brake_pos";
+            this.label_brake_pos.Size = new System.Drawing.Size(123, 12);
+            this.label_brake_pos.TabIndex = 19;
+            this.label_brake_pos.Text = "Brake Position(Bar): ";
             // 
             // label_vehicle_speed
             // 
@@ -314,9 +331,9 @@ namespace vehicle_driving_monitor
             this.label_air_temp.AutoSize = true;
             this.label_air_temp.Location = new System.Drawing.Point(6, 31);
             this.label_air_temp.Name = "label_air_temp";
-            this.label_air_temp.Size = new System.Drawing.Size(127, 12);
+            this.label_air_temp.Size = new System.Drawing.Size(164, 12);
             this.label_air_temp.TabIndex = 1;
-            this.label_air_temp.Text = "Air Temperature(°C): ";
+            this.label_air_temp.Text = "Intake Air Temperature(°C): ";
             // 
             // label_air_conditioning_pressure
             // 
@@ -331,7 +348,7 @@ namespace vehicle_driving_monitor
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("굴림", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label19.Location = new System.Drawing.Point(248, 389);
+            this.label19.Location = new System.Drawing.Point(11, 534);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(128, 15);
             this.label19.TabIndex = 12;
@@ -340,7 +357,7 @@ namespace vehicle_driving_monitor
             // label_steering_angle
             // 
             this.label_steering_angle.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label_steering_angle.Location = new System.Drawing.Point(255, 404);
+            this.label_steering_angle.Location = new System.Drawing.Point(18, 548);
             this.label_steering_angle.Name = "label_steering_angle";
             this.label_steering_angle.Size = new System.Drawing.Size(104, 48);
             this.label_steering_angle.TabIndex = 14;
@@ -351,7 +368,7 @@ namespace vehicle_driving_monitor
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("굴림", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.Location = new System.Drawing.Point(254, 474);
+            this.label21.Location = new System.Drawing.Point(142, 534);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(107, 15);
             this.label21.TabIndex = 15;
@@ -360,7 +377,7 @@ namespace vehicle_driving_monitor
             // label_steering_speed
             // 
             this.label_steering_speed.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label_steering_speed.Location = new System.Drawing.Point(255, 489);
+            this.label_steering_speed.Location = new System.Drawing.Point(143, 548);
             this.label_steering_speed.Name = "label_steering_speed";
             this.label_steering_speed.Size = new System.Drawing.Size(104, 48);
             this.label_steering_speed.TabIndex = 16;
@@ -381,28 +398,97 @@ namespace vehicle_driving_monitor
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBox_can_output);
-            this.groupBox4.Location = new System.Drawing.Point(12, 549);
+            this.groupBox4.Location = new System.Drawing.Point(12, 599);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(360, 150);
             this.groupBox4.TabIndex = 18;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "CAN Messages";
             // 
-            // label_brake_pos
+            // progBar_brake
             // 
-            this.label_brake_pos.AutoSize = true;
-            this.label_brake_pos.Location = new System.Drawing.Point(6, 31);
-            this.label_brake_pos.Name = "label_brake_pos";
-            this.label_brake_pos.Size = new System.Drawing.Size(123, 12);
-            this.label_brake_pos.TabIndex = 19;
-            this.label_brake_pos.Text = "Brake Position(Bar): ";
+            this.progBar_brake.Location = new System.Drawing.Point(325, 377);
+            this.progBar_brake.Name = "progBar_brake";
+            this.progBar_brake.Size = new System.Drawing.Size(45, 200);
+            this.progBar_brake.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progBar_brake.TabIndex = 19;
+            // 
+            // progBar_accel
+            // 
+            this.progBar_accel.Location = new System.Drawing.Point(259, 377);
+            this.progBar_accel.Name = "progBar_accel";
+            this.progBar_accel.Size = new System.Drawing.Size(45, 200);
+            this.progBar_accel.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progBar_accel.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(254, 585);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 12);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Accel(%)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(316, 585);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 12);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Brake(Bar)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(246, 570);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 12);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(233, 374);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(23, 12);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "100";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(302, 373);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(23, 12);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "100";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(310, 570);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 12);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "0";
             // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(384, 707);
+            this.ClientSize = new System.Drawing.Size(384, 761);
+            this.Controls.Add(this.progBar_accel);
+            this.Controls.Add(this.progBar_brake);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label_steering_speed);
             this.Controls.Add(this.label21);
@@ -413,7 +499,7 @@ namespace vehicle_driving_monitor
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_Main";
             this.Text = "Vehicle Data Monitor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Main_FormClosing);
@@ -465,6 +551,14 @@ namespace vehicle_driving_monitor
         private System.Windows.Forms.TextBox textBox_can_output;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label_brake_pos;
+        private verticalProgressBar progBar_brake;
+        private verticalProgressBar progBar_accel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
     }
 }
 
