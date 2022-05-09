@@ -2,6 +2,7 @@
 monitoring various sensor signals(EMS, TCU, SAS, CLU an so on) while driving a vehicle
 
 ![](/img.png)
+![](/img2.png)
 
 # Prerequisite
 * Target DBC file(in my case, i used hyundai_kia_generic.dbc in [commai/opendbc][repo])
