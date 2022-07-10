@@ -3,6 +3,7 @@ monitoring various sensor signals(EMS, TCU, SAS, CLU an so on) while driving a v
 
 <img src="img.png" width="300" height="600" align="left"/>
 <img src="img2.png" width="300" height="600"/>
+<img src="img3.png"/>
 
 # Prerequisite
 * Target DBC file(in my case, i used hyundai_kia_generic.dbc in [commai/opendbc][repo])
