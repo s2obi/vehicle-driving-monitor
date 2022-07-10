@@ -125,19 +125,19 @@ namespace vehicle_driving_monitor
             switch (bitrate)
             {
                 case 0:
-                    /* Sample Point 75% 설정 (Tseg1=5, Tseg2=2, SJW=2) */
+                    /* bitrate 1M, Sample Point 75% 설정 (Tseg1=5, Tseg2=2, SJW=2) */
                     status = Canlib.canSetBusParams(canlib_handle, Canlib.canBITRATE_1M, 0, 0, 0, 0);
                     break;
                 case 1:
-                    /* Sample Point 75% 설정 (Tseg1=11, Tseg2=4, SJW=4) */
+                    /* bitrate 500k, Sample Point 75% 설정 (Tseg1=11, Tseg2=4, SJW=4) */
                     status = Canlib.canSetBusParams(canlib_handle, Canlib.canBITRATE_500K, 11, 4, 4, 0);
                     break;
                 case 2:
-                    /* Sample Point 75% 설정 (Tseg1=11, Tseg2=4, SJW=4) */
+                    /* bitrate 250k, Sample Point 75% 설정 (Tseg1=11, Tseg2=4, SJW=4) */
                     status = Canlib.canSetBusParams(canlib_handle, Canlib.canBITRATE_250K, 0, 0, 0, 0);
                     break;
                 case 3:
-                    /* Sample Point 75% 설정 (Tseg1=11, Tseg2=4, SJW=4) */
+                    /* bitrate 125k, Sample Point 75% 설정 (Tseg1=11, Tseg2=4, SJW=4) */
                     status = Canlib.canSetBusParams(canlib_handle, Canlib.canBITRATE_125K, 0, 0, 0, 0);
                     break;
             }
@@ -195,7 +195,7 @@ namespace vehicle_driving_monitor
             int dlc;                   // CAN data byte 길이
             int flags;                 // 수신 flag
             long timestamp;            // 수신 timestamp
-            //textBox_can_output.AppendText("Channel opened.\r\n");
+            textBox_can_output.AppendText("Channel opened.\r\n");
             //textBox_can_output.AppendText("ID  DLC DATA                     Timestamp\r\n");
             while (true)
             {
